@@ -1,0 +1,97 @@
+I, [2022-06-30T10:08:30.469580 #53636]  INFO -- : Registered expected interaction POST /todo
+D, [2022-06-30T10:08:30.469855 #53636] DEBUG -- : {
+  "description": "a POST request to create a todo",
+  "providerState": "provider allows todo creation",
+  "request": {
+    "method": "POST",
+    "path": "/todo",
+    "body": {
+      "id": null,
+      "text": "Get milk",
+      "status": "pending",
+      "category": "Groceries"
+    }
+  },
+  "response": {
+    "status": 201,
+    "headers": {
+      "Content-Type": {
+        "json_class": "Pact::Term",
+        "data": {
+          "generate": "application/json",
+          "matcher": {"json_class":"Regexp","o":0,"s":"application/json"}
+        }
+      }
+    },
+    "body": {
+      "json_class": "Pact::SomethingLike",
+      "contents": {
+        "id": 1,
+        "text": "Get milk",
+        "status": "pending",
+        "category": "Groceries"
+      }
+    }
+  }
+}
+I, [2022-06-30T10:08:30.484877 #53636]  INFO -- : Received request POST /todo
+D, [2022-06-30T10:08:30.484985 #53636] DEBUG -- : {
+  "path": "/todo",
+  "query": "",
+  "method": "post",
+  "body": {
+    "id": null,
+    "text": "Get milk",
+    "status": "pending",
+    "category": "Groceries"
+  },
+  "headers": {
+    "Content-Length": "71",
+    "Content-Type": "application/json;charset=utf-8",
+    "Accept": "application/json, text/plain, */*",
+    "Referer": "http://localhost/",
+    "User-Agent": "Mozilla/5.0 (darwin) AppleWebKit/537.36 (KHTML, like Gecko) jsdom/16.7.0",
+    "Accept-Language": "en",
+    "Origin": "http://localhost",
+    "Accept-Encoding": "gzip, deflate",
+    "Host": "localhost:8080",
+    "Connection": "keep-alive",
+    "Version": "HTTP/1.1"
+  }
+}
+I, [2022-06-30T10:08:30.485680 #53636]  INFO -- : Found matching response for POST /todo
+D, [2022-06-30T10:08:30.485778 #53636] DEBUG -- : {
+  "status": 201,
+  "headers": {
+    "Content-Type": {
+      "json_class": "Pact::Term",
+      "data": {
+        "generate": "application/json",
+        "matcher": {
+          "json_class": "Regexp",
+          "o": 0,
+          "s": "application/json"
+        }
+      }
+    }
+  },
+  "body": {
+    "json_class": "Pact::SomethingLike",
+    "contents": {
+      "id": 1,
+      "text": "Get milk",
+      "status": "pending",
+      "category": "Groceries"
+    }
+  }
+}
+I, [2022-06-30T10:08:30.526097 #53636]  INFO -- : Verifying - interactions matched
+I, [2022-06-30T10:08:30.529466 #53636]  INFO -- : Cleared interactions
+I, [2022-06-30T10:08:30.532412 #53636]  INFO -- : Verifying - interactions matched
+I, [2022-06-30T10:08:30.535735 #53636]  INFO -- : Cleared interactions
+I, [2022-06-30T10:08:30.540338 #53636]  INFO -- : Updating pact for todo-provider at /Users/gapo/Camp22/Camp22Pact/consumer/pacts/todo-consumer-todo-provider.json
+I, [2022-06-30T10:08:30.541108 #53636]  INFO -- : *****************************************************************************
+I, [2022-06-30T10:08:30.541199 #53636]  INFO -- : Updating existing file ./Users/gapo/Camp22/Camp22Pact/consumer/pacts/todo-consumer-todo-provider.json as pactfile_write_mode is :update
+I, [2022-06-30T10:08:30.541224 #53636]  INFO -- : Only interactions defined in this test run will be updated.
+I, [2022-06-30T10:08:30.541243 #53636]  INFO -- : As interactions are identified by description and provider state, pleased note that if either of these have changed, the old interactions won't be removed from the pact file until the specs are next run with :pactfile_write_mode => :overwrite.
+I, [2022-06-30T10:08:30.541260 #53636]  INFO -- : *****************************************************************************

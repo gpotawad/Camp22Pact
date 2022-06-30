@@ -1,6 +1,5 @@
 const path = require('path');
 const Pact = require('@pact-foundation/pact').Pact;
-
 global.port = 8080;
 global.provider = new Pact({
     cors: true,
@@ -12,5 +11,5 @@ global.provider = new Pact({
     pactfileWriteMode: 'update',
     consumer: 'todo-consumer',
     provider: 'todo-provider',
-    host: '127.0.0.1'
+    host: 'localhost'
 });

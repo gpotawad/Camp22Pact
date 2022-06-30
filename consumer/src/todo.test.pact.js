@@ -1,17 +1,18 @@
 import TodoService from './TodoService';
 import * as Pact from '@pact-foundation/pact';
 import Todo from './Todo';
+//const hostUrl = require('../pact/jest.config.js').testURL;
 
 describe('TodoService API', () => {
 
-    const todoService = new TodoService('http://localhost', global.port);
+    const todoService = new TodoService("http://localhost:8080");
 
     describe('createTodo()', () => {
 
         beforeEach((done) => {
             const contentTypeJsonMatcher = Pact.Matchers.term({
-                matcher: "application\\/json; *charset=utf-8",
-                generate: "application/json; charset=utf-8"
+                matcher: "application/json",
+                generate: "application/json"
             });
 
             global.provider.addInteraction({
@@ -20,10 +21,6 @@ describe('TodoService API', () => {
                 withRequest: {
                     method: 'POST',
                     path: '/todo',
-                    headers: {
-                        'Accept': 'application/json',
-                        'Content-Type': contentTypeJsonMatcher
-                    },
                     body: new Todo(null, 'Get milk', 'pending', 'Groceries')
                 },
                 willRespondWith: {
@@ -38,14 +35,18 @@ describe('TodoService API', () => {
         });
 
         it('sends a request according to contract', (done) => {
-            todoService.createTodo(new Todo('Get milk', 'pending', 'Groceries'))
+            todoService.createTodo(new Todo(null, 'Get milk', 'pending', 'Groceries'))
                 .then(response => {
-                    const todo = response.data;
+                    console.log("__________________response is back _____________")
+                    console.log(response);
+                    const todo = response;
                     expect(todo.id).toEqual(1);
                 })
                 .then(() => {
+                    console.log("in then block of it")
                     global.provider.verify()
                         .then(() => done(), error => {
+                            console.log(error)
                             done.fail(error)
                         })
                 });

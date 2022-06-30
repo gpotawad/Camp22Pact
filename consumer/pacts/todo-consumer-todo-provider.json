@@ -1,0 +1,50 @@
+{
+  "consumer": {
+    "name": "todo-consumer"
+  },
+  "provider": {
+    "name": "todo-provider"
+  },
+  "interactions": [
+    {
+      "description": "a POST request to create a todo",
+      "providerState": "provider allows todo creation",
+      "request": {
+        "method": "POST",
+        "path": "/todo",
+        "body": {
+          "id": null,
+          "text": "Get milk",
+          "status": "pending",
+          "category": "Groceries"
+        }
+      },
+      "response": {
+        "status": 201,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "id": 1,
+          "text": "Get milk",
+          "status": "pending",
+          "category": "Groceries"
+        },
+        "matchingRules": {
+          "$.headers.Content-Type": {
+            "match": "regex",
+            "regex": "application\\/json"
+          },
+          "$.body": {
+            "match": "type"
+          }
+        }
+      }
+    }
+  ],
+  "metadata": {
+    "pactSpecification": {
+      "version": "2.0.0"
+    }
+  }
+}
