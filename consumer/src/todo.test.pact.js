@@ -35,7 +35,7 @@ describe('TodoService API', () => {
         });
 
         it('sends a request according to contract', (done) => {
-            todoService.createTodo(new Todo(null, 'Get milk', 'pending', 'Groceries'))
+            todoService.createTodo(new Todo(null, 'Get milk', 'done', 'Groceries'))
                 .then(response => {
                     console.log("__________________response is back _____________")
                     console.log(response);
